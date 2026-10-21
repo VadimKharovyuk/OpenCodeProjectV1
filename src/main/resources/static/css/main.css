@@ -864,6 +864,25 @@ a {
     margin-top: 8px;
 }
 
+/* ------------------------------------------------------------
+   Dashboard
+   ------------------------------------------------------------ */
+
+.dashboard__sections {
+    display: grid;
+    gap: clamp(32px, 5vw, 56px);
+    margin-top: 32px;
+}
+
+.dashboard__section {
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    padding-top: 32px;
+}
+
+.dashboard__section .heading {
+    margin-bottom: 16px;
+}
+
 @media (max-width: 560px) {
     .field-row {
         grid-template-columns: 1fr;
