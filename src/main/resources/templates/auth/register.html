@@ -25,7 +25,6 @@
     <h1 class="display display--compact">Создать аккаунт.</h1>
 
     <form class="product-form" method="post" th:action="@{/register}" th:object="${registerForm}">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <div class="field">
             <label for="name">Имя</label>
             <input type="text" id="name" th:field="*{name}" autocomplete="name" placeholder="Ваше имя">

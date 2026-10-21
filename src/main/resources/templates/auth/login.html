@@ -29,7 +29,6 @@
     </div>
 
     <form class="product-form" method="post" th:action="@{/login}">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <div class="field">
             <label for="email">Email</label>
             <input type="email" id="email" name="username" autocomplete="email" required placeholder="you@example.com">
