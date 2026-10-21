@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
 
 <header th:fragment="header" class="site-header container">
@@ -20,11 +20,21 @@
     <nav class="nav" aria-label="Основная навигация">
         <a class="nav__link" th:href="@{/}">Главная</a>
         <a class="nav__link" th:href="@{/products}">Товары</a>
-        <a class="nav__link" th:href="@{/admin/products}">Управление</a>
+        <a class="nav__link" th:href="@{/admin/products}" sec:authorize="hasRole('ADMIN')">Управление</a>
     </nav>
 
-    <div class="header-actions">
-        <a class="button" th:href="@{/admin/products/new}">Добавить товар</a>
+    <div class="header-actions" sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button class="ghost-link" type="submit" style="padding:0; border:none; background:none; font:inherit; cursor:pointer;">
+                Выйти
+            </button>
+        </form>
+        <span class="header__user" sec:authentication="name">user@example.com</span>
+    </div>
+
+    <div class="header-actions" sec:authorize="!isAuthenticated()">
+        <a class="ghost-link" th:href="@{/login}">Войти</a>
+        <a class="button" th:href="@{/register}">Регистрация</a>
     </div>
 </header>
 

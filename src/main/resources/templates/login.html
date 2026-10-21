@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход — OpenCodeProject</title>
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main id="main" class="container page page--narrow">
+    <a class="ghost-link ghost-link--arrow" th:href="@{/}">
+        <span aria-hidden="true">←</span> На главную
+    </a>
+
+    <p class="eyebrow eyebrow--spaced">Авторизация</p>
+    <h1 class="display display--compact">Вход в аккаунт.</h1>
+
+    <div class="flash flash--error" th:if="${param.error}">
+        Неверный email или пароль.
+    </div>
+
+    <form class="product-form" method="post" th:action="@{/login}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="username" autocomplete="email" required placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required placeholder="••••••••">
+        </div>
+
+        <div class="form-actions">
+            <button class="button" type="submit">Войти</button>
+        </div>
+    </form>
+
+    <p class="auth-switch">
+        Нет аккаунта? <a th:href="@{/register}">Зарегистрироваться</a>
+    </p>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

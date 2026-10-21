@@ -1,5 +1,6 @@
 package com.example.opencodeproject.controller;
 
+import com.example.opencodeproject.security.TestSecurityConfig;
 import com.example.opencodeproject.dto.ProductForm;
 import com.example.opencodeproject.model.Product;
 import com.example.opencodeproject.service.ProductService;
@@ -7,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
+@Import(TestSecurityConfig.class)
 class ProductControllerTest {
 
     @Autowired
@@ -61,8 +66,10 @@ class ProductControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     void createsProductFromAdminForm() throws Exception {
         mockMvc.perform(post("/admin/products")
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                         .param("name", "Пылесос Dyson")
                         .param("price", "19990.00")
                         .param("stock", "2"))
@@ -74,8 +81,10 @@ class ProductControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     void showsValidationErrorsOnInvalidForm() throws Exception {
         mockMvc.perform(post("/admin/products")
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                         .param("name", "")
                         .param("price", "-5"))
                 .andExpect(status().isOk())
