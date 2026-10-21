@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenCodeProject — ваш код уже знает ответ</title>
+    <meta name="description"
+          content="OpenCodeProject собирает знания о проекте в одном месте: архитектура, зависимости, решения. Ответы на основе реального кода.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<header class="site-header container">
+    <a class="brand" th:href="@{/}" aria-label="OpenCodeProject — на главную">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <defs>
+                <linearGradient id="brandGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#8052ff"/>
+                    <stop offset="100%" stop-color="#15846e"/>
+                </linearGradient>
+            </defs>
+            <path d="M16 3 L29 27 L3 27 Z" fill="none" stroke="url(#brandGradient)" stroke-width="1.5"/>
+            <path d="M16 11 L22.5 23 L9.5 23 Z" fill="none" stroke="url(#brandGradient)" stroke-width="1"/>
+        </svg>
+        <span class="brand__name">OpenCodeProject</span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="#manifesto">Манифест</a>
+        <a class="nav__link" href="#features">Возможности</a>
+        <a class="nav__link" href="#">Блог</a>
+    </nav>
+
+    <div class="header-actions">
+        <a class="ghost-link" href="#">Войти</a>
+        <a class="button" href="#access">Запросить доступ</a>
+    </div>
+</header>
+
+<main id="main">
+    <section class="hero container">
+        <div class="hero__copy">
+            <p class="eyebrow">Java · Spring Boot · Авторизация</p>
+            <h1 class="display">Ваш код уже знает ответ.</h1>
+            <p class="lede">
+                OpenCodeProject собирает знания о проекте в одном месте —
+                архитектуру, зависимости, принятые решения. Спросите, и получите
+                ответ, основанный на реальном коде, а не на догадках.
+            </p>
+            <div class="hero__actions">
+                <a class="button" href="#access">Начать работу</a>
+                <a class="ghost-link ghost-link--arrow" href="#features">
+                    Смотреть возможности <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+            <canvas id="constellation"></canvas>
+        </div>
+    </section>
+
+    <section class="manifesto container" id="manifesto">
+        <div class="manifesto__intro">
+            <p class="eyebrow">Манифест</p>
+            <h2 class="heading">Не панели.<br>Не карточки.<br>Только суть.</h2>
+        </div>
+        <div class="manifesto__body">
+            <p>
+                Мы убрали всё, что мешает думать: рамки, тени, лишние кнопки.
+                Остались чёрное поле, крупный шрифт и частицы, из которых
+                складывается смысл.
+            </p>
+            <p>
+                Так же устроен и проект: вместо сотни экранов — один ответ,
+                собранный из кода, истории коммитов и документации.
+            </p>
+        </div>
+    </section>
+
+    <section class="features container" id="features">
+        <div class="features__intro">
+            <p class="eyebrow">Возможности</p>
+            <h2 class="heading heading--sm">Три вопроса,<br>на которые отвечает система.</h2>
+        </div>
+
+        <ol class="feature-list">
+            <li class="feature">
+                <span class="feature__num">01</span>
+                <h3 class="feature__title">Где это написано?</h3>
+                <p class="feature__text">
+                    Каждый ответ ссылается на файлы и строки. Открывайте код
+                    рядом с объяснением — без переключения контекста.
+                </p>
+            </li>
+            <li class="feature">
+                <span class="feature__num">02</span>
+                <h3 class="feature__title">Почему так?</h3>
+                <p class="feature__text">
+                    Решения восстанавливаются из истории: коммиты, миграции,
+                    конфигурация. Видно не только «что», но и «зачем».
+                </p>
+            </li>
+            <li class="feature">
+                <span class="feature__num">03</span>
+                <h3 class="feature__title">Что будет, если?</h3>
+                <p class="feature__text">
+                    Задайте вопрос о последствиях изменений — система покажет
+                    зависимости и места, которые затронет правка.
+                </p>
+            </li>
+        </ol>
+    </section>
+
+    <section class="access container" id="access">
+        <p class="eyebrow">Ранний доступ</p>
+        <h2 class="display display--compact">Готовы спросить?</h2>
+        <p class="lede">
+            Оставьте заявку — откроем доступ, когда закончим авторизацию
+            и первые сценарии.
+        </p>
+        <a class="button" href="mailto:hello@example.com">Запросить доступ</a>
+    </section>
+</main>
+
+<footer class="footer container">
+    <span class="footer__brand">OpenCodeProject</span>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+        <a href="#manifesto">Манифест</a>
+        <a href="#features">Возможности</a>
+        <a href="#">Блог</a>
+        <a href="#">Контакты</a>
+    </nav>
+    <span class="footer__copy">© <span th:text="${year}">2026</span> OpenCodeProject</span>
+</footer>
+
+<script th:src="@{/js/constellation.js}" defer></script>
+</body>
+</html>
