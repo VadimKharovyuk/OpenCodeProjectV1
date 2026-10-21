@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OpenCodeProjectApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OpenCodeProjectApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OpenCodeProjectApplication.class, args);
+    }
 
 }
