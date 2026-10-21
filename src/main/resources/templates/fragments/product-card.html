@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--
+    Фрагмент работает с переменной {@code product} из контекста вызова
+    (она кладётся туда циклом th:each на стороне страницы).
+-->
+<th:block th:fragment="card">
+    <a class="product-card" th:href="@{/products/{slug}(slug=${product.slug})}">
+        <div class="product-card__head">
+            <h2 class="product-card__title" th:text="${product.name}">Название товара</h2>
+            <span class="product-card__price"
+                  th:text="|₽ ${#numbers.formatDecimal(product.price, 1, 2)}|">₽ 0,00</span>
+        </div>
+        <p class="product-card__desc"
+           th:text="${#strings.isEmpty(product.description) ? 'Без описания.' : product.description}">
+            Описание товара
+        </p>
+        <div class="product-card__meta">
+            <span th:text="${product.stock > 0 ? 'В наличии: ' + product.stock : 'Нет в наличии'}">В наличии</span>
+            <span th:text="|Просмотров: ${product.viewCount}|">Просмотров: 0</span>
+            <span th:text="|Slug: ${product.slug}|">Slug</span>
+        </div>
+    </a>
+</th:block>
+
+</body>
+</html>

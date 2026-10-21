@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<footer th:fragment="footer" class="footer container">
+    <span class="footer__brand">OpenCodeProject</span>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+        <a th:href="@{/}">Главная</a>
+        <a th:href="@{/products}">Товары</a>
+        <a th:href="@{/admin/products}">Управление</a>
+    </nav>
+    <span class="footer__copy">© <span th:text="${year}">2026</span> OpenCodeProject</span>
+</footer>
+
+</body>
+</html>
