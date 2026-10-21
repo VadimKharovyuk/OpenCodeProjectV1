@@ -17,6 +17,7 @@ public class DashboardController {
 
     private final ProductService productService;
 
+
     @GetMapping("/dashboard")
     public String userDashboard(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         // Показываем последние товары пользователю
